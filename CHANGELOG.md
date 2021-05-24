@@ -4,6 +4,10 @@ All notable changes to the "package-watcher" extension will be documented in thi
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.0.3]
+
+- Run `yarn` in verbose mode in order to resolve issues quicker
+
 ## [0.0.2]
 
 - Fix README: Update animated gif & left align table headings

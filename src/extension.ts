@@ -75,7 +75,7 @@ class PackageWatcherExtension {
         const terminalCommand = filteredPackageLockFile.fsPath.endsWith(
           "yarn.lock"
         )
-          ? "yarn install"
+          ? "yarn install --verbose"
           : "npm install";
 
         const command =
