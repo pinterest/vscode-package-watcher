@@ -1,0 +1,84 @@
+{
+  "name": "package-watcher",
+  "displayName": "Package Watcher",
+  "description": "Watch package lock files and run npm or yarn",
+  "version": "0.0.1",
+  "publisher": "pinterest",
+  "engines": {
+    "vscode": "^1.53.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "Package Watcher",
+    "lock files",
+    "npm",
+    "yarn",
+    "Watch",
+    "Watcher"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "url": "https://github.com/pinterest/vscode-package-watcher"
+  },
+  "activationEvents": [
+    "workspaceContains:**/package.json"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "packageWatcher.mode": {
+        "default": "request",
+        "description": "Set the package watcher mode. `request` notifies you when a change in a package lock file is detected and asks you to install new depedencies. `auto` runs the extension in the background and automatically runs yarn/npm install.",
+        "type": "string",
+        "enum": [
+          "request",
+          "auto"
+        ]
+      },
+      "packageWatcher.enableTelemetry": {
+        "default": true,
+        "description": "Enable usage data and errors tracking (Google Analytics)",
+        "scope": "window",
+        "type": "boolean"
+      }
+    },
+    "commands": [
+      {
+        "command": "packageWatcher.showOutputChannel",
+        "title": "Show Output Channel",
+        "category": "Package Watcher"
+      }
+    ]
+  },
+  "icon": "images/logo-256.png",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "^12.11.7",
+    "@types/uuid": "^8.3.0",
+    "@types/vscode": "^1.53.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "eslint": "^7.19.0",
+    "glob": "^7.1.6",
+    "mocha": "^8.2.1",
+    "prettier": "2.3.0",
+    "typescript": "^4.1.3",
+    "vscode-test": "^1.5.0"
+  },
+  "dependencies": {
+    "execa": "^5.0.0",
+    "got": "^11.8.2",
+    "uuid": "^8.3.2"
+  }
+}
