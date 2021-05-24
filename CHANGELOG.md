@@ -4,6 +4,10 @@ All notable changes to the "package-watcher" extension will be documented in thi
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.0.4]
+
+- Use `nvm` when it's installed
+
 ## [0.0.3]
 
 - Run `yarn` in verbose mode in order to resolve issues quicker

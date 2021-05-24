@@ -15,8 +15,9 @@ async function runCommand(
   options: execa.CommonOptions<"utf8">
 ): Promise<execa.ExecaChildProcess> {
   try {
+    const wrappedCommand = `export NVM_DIR="$HOME/.nvm"; [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" ; nvm use > /dev/null 2>&1; ${command}`;
     log.info(`Command: ${command} / Options: ${JSON.stringify(options)}`);
-    return await execa.command(command, { shell: "bash", ...options });
+    return await execa.command(wrappedCommand, { shell: "bash", ...options });
   } catch (e) {
     return e;
   }
@@ -75,7 +76,7 @@ class PackageWatcherExtension {
         const terminalCommand = filteredPackageLockFile.fsPath.endsWith(
           "yarn.lock"
         )
-          ? "yarn install --verbose"
+          ? "yarn install"
           : "npm install";
 
         const command =
