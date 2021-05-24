@@ -5,7 +5,7 @@
 
 Watch package lock files and suggest to re-run npm or yarn.
 
-<img src="images/package-watcher-animated.gif" width="595" alt="Package Watcher animated gif to show functionality of the VSCode extension" />
+<img src="https://raw.githubusercontent.com/christianvuerings/vscode-package-watcher/master/images/package-watcher-animated.gif" width="595" alt="Package Watcher animated gif to show functionality of the VSCode extension" />
 
 ## Features
 
@@ -29,14 +29,14 @@ Install options:
 ## Extension Settings
 
 | Setting                          | Type (default)                              | Description                                                                                                                                                                                                |
-| -------------------------------- | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :------------------------------- | :------------------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `packageWatcher.enableTelemetry` | `boolean` (`true`)                          | Enable/disable telemetry                                                                                                                                                                                   |
 | `packageWatcher.mode`            | `enum: 'auto', 'request'` (**`'request'`**) | `request` notifies you when a change in a package lock file is detected and asks you to install new depedencies.<br />`auto` runs the extension in the background and automatically runs yarn/npm install. |
 
 ## Extension Commands
 
 | Setting                            | Description             |
-| ---------------------------------- | ----------------------- |
+| :--------------------------------- | :---------------------- |
 | `packageWatcher.showOutputChannel` | Show the output channel |
 
 ## Release Notes
