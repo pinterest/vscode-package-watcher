@@ -28,10 +28,10 @@ Install options:
 
 ## Extension Settings
 
-| Setting                          | Type (default)                              | Description                                                                                                                                                                                                |
-| :------------------------------- | :------------------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `packageWatcher.enableTelemetry` | `boolean` (`true`)                          | Enable/disable telemetry                                                                                                                                                                                   |
-| `packageWatcher.mode`            | `enum: 'auto', 'request'` (**`'request'`**) | `request` notifies you when a change in a package lock file is detected and asks you to install new depedencies.<br />`auto` runs the extension in the background and automatically runs yarn/npm install. |
+| Setting                          | Type (default)                           | Description                                                                                                                                                                                               |
+| :------------------------------- | :--------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `packageWatcher.enableTelemetry` | `boolean` (`true`)                       | Enable/disable telemetry                                                                                                                                                                                  |
+| `packageWatcher.mode`            | `enum: 'auto', 'request'` (**`'auto'`**) | `auto` runs the extension in the background and automatically runs yarn/npm install.<br />`request`notifies you when a change in a package lock file is detected and asks you to install new depedencies. |
 
 ## Extension Commands
 

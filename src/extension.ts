@@ -68,8 +68,7 @@ class PackageWatcherExtension {
     }
 
     const mode: "request" | "auto" =
-      vscode.workspace.getConfiguration("packageWatcher").get("mode") ??
-      "request";
+      vscode.workspace.getConfiguration("packageWatcher").get("mode") ?? "auto";
 
     await Promise.all(
       filteredPackageLockFiles.map(async (filteredPackageLockFile) => {
@@ -132,9 +131,11 @@ class PackageWatcherExtension {
             value: "1",
           });
 
-          vscode.window.showInformationMessage(
-            `${command} in ${relativeDirectory} succeeded`
-          );
+          if (mode === "request") {
+            vscode.window.showInformationMessage(
+              `${command} in ${relativeDirectory} succeeded`
+            );
+          }
         } else {
           log.debug(`[Command Exit Code] ${exitCode}`);
           lines.forEach((line) => {
