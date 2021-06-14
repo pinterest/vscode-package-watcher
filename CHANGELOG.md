@@ -4,6 +4,10 @@ All notable changes to the "package-watcher" extension will be documented in thi
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.0.7]
+
+- Improve error messages & fix 'Show logs' button
+
 ## [0.0.6]
 
 - Make `auto` the default mode and only show error notifications in `auto` mode.

@@ -109,7 +109,7 @@ class PackageWatcherExtension {
         });
         log.debug(`Command output: ${JSON.stringify(output, null, 2)}`);
 
-        const { exitCode, stdout } = output;
+        const { exitCode, stdout, stderr } = output;
         const lines = stdout
           .split("\n")
           .map((line) => line.trim())
@@ -138,7 +138,13 @@ class PackageWatcherExtension {
           }
         } else {
           log.debug(`[Command Exit Code] ${exitCode}`);
-          lines.forEach((line) => {
+          [
+            ...lines,
+            ...stderr
+              .split("\n")
+              .map((line) => line.trim())
+              .filter(Boolean),
+          ].forEach((line) => {
             log.error(`${line}`);
           });
 
@@ -154,11 +160,12 @@ class PackageWatcherExtension {
             value: "1",
           });
 
-          const showLogs = vscode.window.showErrorMessage(
+          const showLogs = await vscode.window.showErrorMessage(
             `${command} in ${relativeDirectory} failed`,
             "Show logs"
           );
-          if (showLogs) {
+
+          if (showLogs === "Show logs") {
             log.show();
           }
         }
