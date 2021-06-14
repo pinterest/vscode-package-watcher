@@ -2,7 +2,7 @@
   "name": "package-watcher",
   "displayName": "Package Watcher",
   "description": "Watch package lock files and run npm or yarn",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "publisher": "pinterest",
   "engines": {
     "vscode": "^1.53.0"
@@ -31,7 +31,7 @@
       "title": "Package Watcher",
       "properties": {
         "packageWatcher.mode": {
-          "default": "request",
+          "default": "auto",
           "description": "Set the package watcher mode. `request` notifies you when a change in a package lock file is detected and asks you to install new depedencies. `auto` runs the extension in the background and automatically runs yarn/npm install.",
           "type": "string",
           "enum": [
