@@ -4,9 +4,13 @@ All notable changes to the "package-watcher" extension will be documented in thi
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.0.9]
+
+- Notifications bug fix
+
 ## [0.0.8]
 
-- Don't show error notifications when you are in auto mode.
+- Do not show error notifications when you are in auto mode.
 
 ## [0.0.7]
 

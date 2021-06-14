@@ -160,13 +160,15 @@ class PackageWatcherExtension {
             value: "1",
           });
 
-          const showLogs = await vscode.window.showErrorMessage(
-            `${command} in ${relativeDirectory} failed`,
-            "Show logs"
-          );
+          if (mode === "request") {
+            const showLogs = await vscode.window.showErrorMessage(
+              `${command} in ${relativeDirectory} failed`,
+              "Show logs"
+            );
 
-          if (showLogs === "Show logs") {
-            log.show();
+            if (showLogs === "Show logs") {
+              log.show();
+            }
           }
         }
       })
