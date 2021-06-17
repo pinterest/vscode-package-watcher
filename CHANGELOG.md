@@ -4,6 +4,10 @@ All notable changes to the "package-watcher" extension will be documented in thi
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.1.0]
+
+- Restart ESLint Server when package install is successful & [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) is installed
+
 ## [0.0.9]
 
 - Notifications bug fix

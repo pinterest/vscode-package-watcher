@@ -136,6 +136,11 @@ class PackageWatcherExtension {
               `${command} in ${relativeDirectory} succeeded`
             );
           }
+
+          const commands = await vscode.commands.getCommands(true);
+          if (commands.includes("eslint.restart")) {
+            await vscode.commands.executeCommand("eslint.restart");
+          }
         } else {
           log.debug(`[Command Exit Code] ${exitCode}`);
           [

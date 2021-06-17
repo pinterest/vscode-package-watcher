@@ -2,7 +2,7 @@
   "name": "package-watcher",
   "displayName": "Package Watcher",
   "description": "Watch package lock files and run npm or yarn",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "publisher": "pinterest",
   "engines": {
     "vscode": "^1.53.0"
