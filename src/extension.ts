@@ -19,7 +19,20 @@ async function runCommand(
     log.info(`Command: ${command} / Options: ${JSON.stringify(options)}`);
     return await execa.command(wrappedCommand, { shell: "bash", ...options });
   } catch (e) {
+    // @ts-ignore
     return e;
+  }
+}
+
+async function findPackageJSON() {
+  try {
+    const output = await vscode.workspace.findFiles(
+      "**/package.json",
+      "**/node_modules/**"
+    );
+    return Boolean(output.length);
+  } catch (error) {
+    return false;
   }
 }
 
@@ -242,6 +255,10 @@ async function initializePackageWatcher(
 }
 
 export async function activate(context: vscode.ExtensionContext) {
+  if (!(await findPackageJSON())) {
+    return;
+  }
+
   statusBar.activate();
   let extension: PackageWatcherExtension = await initializePackageWatcher(
     context

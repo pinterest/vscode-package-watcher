@@ -2,7 +2,7 @@
   "name": "package-watcher",
   "displayName": "Package Watcher",
   "description": "Watch package lock files and run npm or yarn",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "pinterest",
   "engines": {
     "vscode": "^1.53.0"
@@ -23,6 +23,7 @@
     "url": "https://github.com/pinterest/vscode-package-watcher"
   },
   "activationEvents": [
+    "onStartupFinished",
     "workspaceContains:**/package.json"
   ],
   "main": "./out/extension.js",
