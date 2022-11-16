@@ -194,6 +194,19 @@ class PackageWatcherExtension {
   }
 }
 
+async function isWorkSpace(uri: vscode.Uri) {
+  try {
+    const packageJsonPath = vscode.Uri.joinPath(
+      uri.with({ path: path.posix.dirname(uri.path) }),
+      "package.json"
+    );
+    const contents = await vscode.workspace.fs.readFile(packageJsonPath);
+    return !!JSON.parse(contents.toString()).workspaces;
+  } catch (error) {
+    return false;
+  }
+}
+
 async function doesNodeModulesExist(uri: vscode.Uri) {
   try {
     await vscode.workspace.fs.stat(
@@ -232,13 +245,21 @@ async function initializePackageWatcher(
     )
   ).filter(Boolean as any as ExcludesFalse);
 
+  const lockfilesWithoutWorkspaces = (
+    await Promise.all(
+      lockfilesWithNodeModules.map(async (uri) =>
+        !(await isWorkSpace(uri)) ? uri : false
+      )
+    )
+  ).filter(Boolean as any as ExcludesFalse);
+
   log.info(
-    `Found ${lockfilesWithNodeModules.length} package lock ${
-      lockfilesWithNodeModules.length === 1 ? "file" : "files"
+    `Found ${lockfilesWithoutWorkspaces.length} package lock ${
+      lockfilesWithoutWorkspaces.length === 1 ? "file" : "files"
     } with 'node_modules' installed`
   );
 
-  lockfilesWithNodeModules.forEach((lockfileWithNodeModules) => {
+  lockfilesWithoutWorkspaces.forEach((lockfileWithNodeModules) => {
     log.info(`File: ${lockfileWithNodeModules.fsPath}`);
   });
 
