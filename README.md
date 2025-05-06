@@ -9,7 +9,7 @@ Watch package lock files and suggest to re-run npm or yarn.
 
 ## Features
 
-- `npm` and `yarn` support
+- `pnpm`, `npm` and `yarn` support
 - Monorepo support
 - 2 Modes: `auto` & `request` [mode](#extension-settings)
 - Restart ESLint server when package install is successful
@@ -24,7 +24,7 @@ Install options:
 
 ## Requirements
 
-- Use either `npm` or `yarn` in your project
+- Use either `pnpm`, `npm` or `yarn` in your project
 - A `node_modules` directory
 
 ## Extension Settings
@@ -61,7 +61,7 @@ vsce publish patch
 ### How does the extension work?
 
 - Activate if there are 1 or multiple `package.json` file(s) within the workspace.
-- Watch for changes to `yarn.lock` or `package-lock.json` files.
+- Watch for changes to `pnpm-lock.yaml`, `yarn.lock` or `package-lock.json` files.
 - When there are changes, ensure a sibling `node_modules` directory already exists. If not, don't do anything.
 - When a `node_modules` directory exist either:
   - Ping the user to run the install command: `request` mode
@@ -76,7 +76,7 @@ We only run the install command in directories which have a `node_modules` direc
 Validate the following:
 
 1. `package.json` exists in the VSCode workspace.
-2. `yarn.lock` or `package-lock.json` file exists in the VSCode workspace.
+2. `pnpm-lock.yaml`, `yarn.lock` or `package-lock.json` file exists in the VSCode workspace.
 3. `node_modules` directory lives next to the `package.json` directory.
 
 Then restart your editor and copy/paste the output in the `Package Watcher` output log. You can see this log by clicking on `Package Watcher` in the status bar.
